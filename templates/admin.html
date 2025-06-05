@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Shop Lifting Admin</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      <script src="{{ url_for('static', filename = 'js/jquery.min.js') }}"></script>
+      <script src="{{ url_for('static', filename = 'js/jquery-ui.min.js') }}"></script>      
+      <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
+      <style type="text/css">
+        input{
+          height: 40px;
+          width: 50%;
+          padding-left: 10px
+        }
+        h4{
+          color: white;
+          cursor: pointer;
+        }
+        table{
+          border: 1px solid gray;
+          background: white;
+          border-radius: 3px; 
+        }
+        table td{
+          padding: 5px;
+        }
+        table th{
+          padding: 5px;
+        }
+        .action{
+          cursor: pointer;
+          color: white;
+          border-radius: 3px;
+          padding: 5px;
+          background-image: linear-gradient(90deg, #0367a6 0%, #008997 74%);
+        }
+        .up{
+          background: green;
+        }
+        .down{
+          background: red;
+        }
+      </style>
+   </head>
+   <body>
+      <div class="bg-img">
+         <div class="loader"></div>
+         <div class="content">
+            <header>Shop Lifting  - Admin</header>
+            <div id="login">
+              <form action="#">
+                    <input type="text" required placeholder="username" id="username"><br><br>
+                    <input type="password" required placeholder="Password" id="password"><br>
+              </form>
+              <div>
+                  <button class="button" id="loginbtn">Login</button>
+              </div>
+            </div>
+            <div id="userdata" style="display: none;">
+              <table style="width: 100%" rules="all">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>User Name</th>
+                    <th>Phone</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="usertable"></tbody>
+              </table>
+            </div>
+          </div>
+      </div>
+      <script>
+        $(document).ready(function(){
+
+          $("#loginbtn").click(function(){
+              
+              let username  = $("#username").val();
+              let password  = $("#password").val();
+
+              if (username == '' || password == ''){
+                alert("Enter The Valid Details")
+              }else{
+                $.ajax({
+                  url:"/adminlogin", 
+                  type: "post", 
+                  dataType: 'json',
+                  data: {"username":username, "password":password},
+                  beforeSend: function(){
+                        $(".loader").show();
+                    },
+                    success: function(output){
+                      $(".loader").hide();
+                      if (output == 0){
+                        errmsg = 'Username and Password does not match!'
+                        alert(errmsg)
+                      }else if (output == 1){
+                        $("#errormsg").html("");
+                        $("#login").hide()
+                        $("#userdata").slideUp();
+                        $("#userdata").show()
+                        updatedata()
+                      }else{
+                        alert("Something went wrong! Please try again.")
+                      }
+                    },
+                    error:function(){
+                          $(".loader").hide();
+                          alert("Something went wrong! Please try again.")
+                        }
+                });
+              }
+            });
+        });
+
+         function updatedata(){
+            $.ajax({
+                url:"/getuserrecords", 
+                type: "post", 
+                dataType: 'json',
+                data: {},
+                beforeSend: function(){
+                      $(".loader").show();
+                  },
+                  success: function(output){
+                    let appenddata = ''
+                    if (output.length > 0){
+                      for(var i=0; i<= output.length-1; i++){
+                        appenddata += `<tr>
+                        <td>`+"USR-"+output[i]["userid"]+`</td>
+                        <td>`+output[i]["username"]+`</td>
+                        <td>`+output[i]["phone"]+`</td>
+                        <td>`+output[i]["created_at"]+`</td>
+                        <td><span class='action down' onclick=action(`+output[i]["userid"]+`,'2')>Reject</span>&nbsp;&nbsp;<span class='action up' onclick=action(`+output[i]["userid"]+`,'1')>Approve</span></td>`
+                      }
+                    }else{
+                      appenddata = "<tr><td colspan = '6' style='text-align:center'>No Data Found!</td></tr>"
+                    }
+                    $("#usertable").html(appenddata);
+                    $(".loader").hide();
+                  },
+                  error:function(){
+                      $(".loader").hide();
+                      alert("Something went wrong! Please try again.")
+                    }
+              });
+          }
+
+          function action(userid, step){
+             $.ajax({
+                url:"/updateuserrecord", 
+                type: "post", 
+                dataType: 'json',
+                data: {"userid":userid, "step":step},
+                beforeSend: function(){
+                    $(".loader").show();
+                },
+                success: function(output){
+                  if (output == 1){
+                    alert("Update success!")
+                    updatedata()
+                  }
+                },
+                error:function(){
+                    $(".loader").hide();
+                    alert("Something went wrong! Please try again.")
+                }
+              });
+          }
+      </script>
+   </body>
+</html>

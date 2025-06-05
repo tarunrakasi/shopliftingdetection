@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop Lifting Detect</title>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <style type="text/css">
+      .bg-color {
+    background-color: rgb(57 57 57 / 47%);
+    min-height: 650px;
+}
+    </style>
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <!--banner-->
+  <section id="banner" class="banner">
+    <div class="bg-color">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="col-md-12">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <!-- <a class="navbar-brand" href="#"><img src="{{ url_for('static', filename='img/logo.png') }}" class="img-responsive" style="width: 140px; margin-top: -16px;"></a> -->
+               <h3 style="color: white; word-spacing: 2px; font-weight: bold; padding: 3px; border: 1px solid white; border-radius: 3px; background: rgb(47 19 138 / 58%)">Shop Lifting Detect</h3>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="{{ url_for('main') }}">Home</a></li>
+                <li class=""><a href="{{ url_for('service') }}">Services</a></li>                
+                <li class=""><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li class=""><a href="{{ url_for('ourai') }}">Our AI</a></li>
+                <li class=""><a href="{{ url_for('joinus') }}">Join Us</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <div class="row">
+           <div class="row" style="top: 50%;left: 50%;position: absolute;width: 100%;transform: translate(-50%, -50%);">
+          <div class="col-md-4"></div>
+          <div class="col-md-4" style=" border-radius: 10px; padding:10px; color: white; border: 1px solid white; background:  rgb(47 19 138 / 58%)">
+            <center><span class="errormessage" style="color: #f7a2a2"></span></center>
+            <div id="registerform" style="display: none;">
+                  <center><h3 style="color: white">User Registeration</h3></center>
+                  <form action="#">
+                    <div class="row">
+                      <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="email">Name</label>
+                              <input type="email" class="form-control" id="regusername" placeholder="Eg:) Adity Ansari">
+                            </div>
+                      </div>
+                      <div class="col-md-6">
+                             <div class="form-group">
+                              <label for="email">Email</label>
+                              <input type="email" class="form-control" id="regemail" placeholder="Eg:) adityansari@gmail.com">
+                            </div>
+                      </div>
+                    </div>
+                    
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="email">Phone</label>
+                          <input type="email" class="form-control" id="regphone" placeholder="Eg:) 9786543512">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                             <div class="form-group">
+                              <label for="pwd">Password</label>
+                              <input type="password" class="form-control" id="regpassword" placeholder="Eg:) *******">
+                            </div>
+                      </div>
+                    </div>
+                     
+                    
+                    
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="email">using For</label>
+                          <input type="email" class="form-control" id="usingfor" placeholder="Eg:) Find Shop Lifting">
+                        </div>
+                         </div>
+                    </div>
+                    
+                    
+                    <div class="row">
+                       <div class="col-md-3"></div>
+                        <div class="col-md-6"><button type="button" id="signupbtn" class="btn" style="width: 100%; background: #3d1a66; border: 1px solid white">Register</button>
+                          <br><br>
+                          <center><span id="loglink" style="cursor: pointer;">Already registered?</span></center>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                  </form>
+              </div>
+
+              <div id="logform">
+                  <center><h3 style="color: white">Login</h3></center>
+                  <form action="#">
+                     <div class="form-group">
+                      <label for="email">Phone</label>
+                      <input type="email" class="form-control" id="signphone" placeholder="Eg:) 9786543512">
+                    </div>
+                    <div class="form-group">
+                      <label for="pwd">Password</label>
+                      <input type="password" class="form-control" id="signpassword" placeholder="Eg:) *******">
+                    </div>
+                    <div class="row">
+                       <div class="col-md-3"></div>
+                        <div class="col-md-6"><button type="button" id="signinbtn" class="btn" style="width: 100%; background: #3d1a66; border: 1px solid white">Login</button>
+                          <br><br>
+                          <center><span id="reglink" style="cursor: pointer;">New user?</span></center>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                  </form>
+              </div>
+
+            </div>
+              <div class="col-md-4"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% include 'footer.html' %}
+<script type="text/javascript">
+      $(document).ready(function(){
+        $("#reglink").click(function(){
+          $("#registerform").show();
+          $("#logform").hide();
+        });
+
+        $("#loglink").click(function(){
+          $("#registerform").hide();
+          $("#logform").show();
+        });
+
+        $("#signinbtn").click(function(){
+          var signphone = $("#signphone").val();
+          var signpassword = $("#signpassword").val();
+          if (signphone == ''){
+            message("Enter the phone!")
+          }else if(signpassword == ''){
+            message("Enter the password!")
+          }else{
+            $.ajax({
+                url:"/login", 
+                type: "post", 
+                dataType: 'json',
+                data: {"signphone":signphone, "signpassword":signpassword},
+                  success: function(output){
+                    if (output == 0){
+                      message('Username and Password does not match!')
+                    }if (output == 2){
+                      message('You can access the system after the admin approval!')
+                    }else if (output == 1){
+                      location.href  = "history"
+                    }
+                  }
+                });
+          }
+        });
+
+        $("#signupbtn").click(function(){
+          var regusername = $("#regusername").val();
+          var regphone = $("#regphone").val();
+          var regemail = $("#regemail").val();
+          var regpassword = $("#regpassword").val();
+          var usingfor = $("#usingfor").val();
+
+          if (regusername == ''){
+            message("Enter the Username!")
+          }else if(regphone == ''){
+            message("Enter the Phone!")
+          }else if(regemail == ''){
+            message("Enter the Email!")
+          }else if(regpassword == ''){
+            message("Enter the Password!")
+          }else{
+            $.ajax({
+              url:"/register", 
+              type: "post", 
+              dataType: 'json',
+              data: {"regusername":regusername, "regphone":regphone, "regemail":regemail, "regpassword":regpassword, "usingfor":usingfor},
+                success: function(output){
+                  if (output == 2){
+                    message('User details already exists. please login')
+                  }else if (output == 1){
+                    message("Registeration Completed! Login to continue")
+                    $("#loglink").click()
+                  }
+                }
+              });
+          }
+        });
+
+
+        function message(message){
+          $(".errormessage").html(message)
+          $(".errormessage").show()
+          return false
+        }
+          });
+    </script>

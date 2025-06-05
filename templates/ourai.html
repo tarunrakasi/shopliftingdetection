@@ -1,0 +1,41 @@
+{% include 'header.html' %}
+
+<section id="contact" class="section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="ser-title">Our Model</h2>
+        <hr class="botm-line">
+      </div>
+      <div class="col-md-12 col-sm-12">
+        
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-4"><img src="{{ url_for('static', filename='perf.png') }}"></div>
+          <div class="col-md-4"><img src="{{ url_for('static', filename='conf.png') }}"></div>
+          <div class="col-md-4"></div>
+          <div class="col-md-2"></div>
+          <div class="col-md-12">
+            <p>
+                The Shoplifting detection model uses advanced **YOLO (You Only Look Once)** image recognition technology to analyze real-time video feeds and identify suspicious behavior in retail environments. YOLO allows us to detect multiple objects, such as individuals or items, in a single frame, making it ideal for tracking potential theft in stores. The confusion matrix shown in the image provides a summary of the model's performance.
+            </p>
+            <p>
+                The confusion matrix includes four key metrics:
+            </p>
+            <ul>
+                <li><strong>True Positives (TP):</strong> The number of correctly identified shoplifting incidents, which is 103.</li>
+                <li><strong>True Negatives (TN):</strong> The number of correctly identified non-shoplifting cases, which is 231.</li>
+                <li><strong>False Positives (FP):</strong> The number of non-shoplifting cases incorrectly identified as shoplifting, which is 129.</li>
+                <li><strong>False Negatives (FN):</strong> The number of shoplifting incidents incorrectly identified as non-shoplifting, which is 137.</li>
+            </ul>
+            <p>
+                The matrix highlights the model's accuracy in distinguishing between shoplifting and non-shoplifting behavior. In this case, the model correctly identified 231 non-shoplifting incidents and 103 shoplifting incidents, but it also made errors, misclassifying 129 non-shoplifting cases as shoplifting and 137 shoplifting incidents as non-shoplifting. This confusion matrix is a useful tool for evaluating the effectiveness of the model and identifying areas for improvement. The color intensity in the matrix visually represents the frequency of each classification, with darker shades indicating higher counts.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include 'footer.html' %}

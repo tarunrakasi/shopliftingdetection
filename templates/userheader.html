@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop Lifting</title>
+  <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
+  <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+     <style>
+        .padding {
+              padding: 3rem !important;
+              top: 60%;
+              left: 50%;
+              position: absolute;
+              transform: translate(-50%,  -50%);
+          }
+          .user-card-full {
+              overflow: hidden;
+          }
+          .card {
+              border-radius: 5px;
+              -webkit-box-shadow: 0 1px 20px 0 #321d93;
+              box-shadow: 0 1px 20px 0 #321d93;
+              border: none;
+              margin-bottom: 30px;
+          }
+          .m-r-0 {
+              margin-right: 0px;
+          }
+          .m-l-0 {
+              margin-left: 0px;
+          }
+          .user-card-full .user-profile {
+              border-radius: 5px 0 0 5px;
+          }
+          .bg-c-lite-green {
+              background: linear-gradient(to right, #321d93, #6ed6c5);
+          }
+          .user-profile {
+            display: flex;
+            height: 397px;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px 0;
+            color: white;
+          }
+          .card-block {
+              padding: 1.25rem;
+          }
+          .m-b-25 {
+              margin-bottom: 25px;
+          }
+          .img-radius {
+              border-radius: 5px;
+          }
+          h6 {
+              font-size: 14px;
+          }
+          .card .card-block p {
+              line-height: 25px;
+          }
+          @media only screen and (min-width: 1400px){
+          p {
+              font-size: 14px;
+          }
+          }
+          .card-block {
+              padding: 1.25rem;
+          }
+          .b-b-default {
+              border-bottom: 1px solid #e0e0e0;
+          }
+          .m-b-20 {
+              margin-bottom: 20px;
+          }
+          .p-b-5 {
+              padding-bottom: 5px !important;
+          }
+          .card .card-block p {
+              line-height: 25px;
+          }
+          .m-b-10 {
+              margin-bottom: 10px;
+          }
+          .text-muted {
+              color: #919aa3 !important;
+              text-decoration: underline;
+          }
+          .b-b-default {
+              border-bottom: 1px solid #321d93;
+          }
+          .f-w-600 {
+              font-weight: bold;
+              color: #4b4848;
+          }
+          .m-b-20 {
+              margin-bottom: 20px;
+          }
+          .m-t-40 {
+              margin-top: 20px;
+          }
+          .p-b-5 {
+              padding-bottom: 5px !important;
+          }
+          .m-b-10 {
+              margin-bottom: 10px;
+          }
+          .m-t-40 {
+              margin-top: 20px;
+          }
+          .user-card-full .social-link li {
+              display: inline-block;
+          }
+          .user-card-full .social-link li a {
+              font-size: 20px;
+              margin: 0 10px 0 0;
+              -webkit-transition: all 0.3s ease-in-out;
+              transition: all 0.3s ease-in-out;
+          }
+          .profileinput{
+            background-color: transparent; 
+            border: none;
+            outline: none;
+          }
+          .profileinput:focus{
+            border: none;
+            outline: 1px solid rgb(224, 223, 223);
+            cursor: pointer;
+          }
+          .btn:focus{
+            border:none;
+            outline:none;
+
+          }
+  </style>
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<nav class="navbar navbar-default navbar-fixed-top" style="background: #321d93">
+        <div class="container">
+          <div class="col-md-12">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+            <h3 style="color: white; word-spacing: 2px; font-weight: bold; padding: 3px; border: 1px solid white; border-radius: 3px; background: rgb(47 19 138 / 58%)">Shop Lifting</h3>
+             </div>
+            <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+              <ul class="nav navbar-nav">
+                 <li class="active"><a href="{{ url_for('aidiagnosis') }}">Home</a></li>
+                <li class=""><a href="{{ url_for('service') }}">Services</a></li>                
+                <li class=""><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li class=""><a href="{{ url_for('ourai') }}">Our AI</a></li>
+                <li class=""><a href="{{ url_for('logout') }}">Logout</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
